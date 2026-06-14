@@ -39,7 +39,7 @@ class AuthServiceTest {
                 List.of(kakaoOAuthClient), userRepository, jwtProvider, refreshTokenService);
 
         when(kakaoOAuthClient.getUserInfo("social-token"))
-                .thenReturn(new OAuthUserInfo(Provider.KAKAO, "kakao-1", "a@b.com", "tester"));
+                .thenReturn(new OAuthUserInfo(Provider.KAKAO, "kakao-1", "a@b.com"));
         when(userRepository.findByProviderAndProviderId(Provider.KAKAO, "kakao-1"))
                 .thenReturn(Optional.empty());
         when(userRepository.save(any(User.class)))
@@ -61,9 +61,9 @@ class AuthServiceTest {
                 List.of(kakaoOAuthClient), userRepository, jwtProvider, refreshTokenService);
 
         when(kakaoOAuthClient.getUserInfo("social-token"))
-                .thenReturn(new OAuthUserInfo(Provider.KAKAO, "kakao-1", "a@b.com", "tester"));
+                .thenReturn(new OAuthUserInfo(Provider.KAKAO, "kakao-1", "a@b.com"));
         when(userRepository.findByProviderAndProviderId(Provider.KAKAO, "kakao-1"))
-                .thenReturn(Optional.of(User.register(Provider.KAKAO, "kakao-1", "a@b.com", "tester")));
+                .thenReturn(Optional.of(User.register(Provider.KAKAO, "kakao-1", "a@b.com")));
         when(jwtProvider.createAccessToken(any())).thenReturn("access");
         when(jwtProvider.createRefreshToken(any())).thenReturn("refresh");
 

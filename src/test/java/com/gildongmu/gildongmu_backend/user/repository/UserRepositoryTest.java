@@ -25,7 +25,7 @@ class UserRepositoryTest {
     @Test
     void provider와_providerId로_회원을_조회한다() {
         User saved = userRepository.save(
-                User.register(Provider.KAKAO, "kakao-123", "a@b.com", "tester"));
+                User.register(Provider.KAKAO, "kakao-123", "a@b.com"));
 
         var found = userRepository.findByProviderAndProviderId(Provider.KAKAO, "kakao-123");
 
