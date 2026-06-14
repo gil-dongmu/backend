@@ -1,0 +1,16 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gildongmu
+    username: gildongmu
+    password: gildongmu
+    driver-class-name: org.postgresql.Driver
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+jwt:
+  secret: local-dev-secret-please-change-this-to-32bytes-or-more-0123456789
