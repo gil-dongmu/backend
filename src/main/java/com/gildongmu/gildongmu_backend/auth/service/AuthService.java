@@ -58,8 +58,7 @@ public class AuthService {
                     return userRepository.save(User.register(
                             userInfo.provider(),
                             userInfo.providerId(),
-                            userInfo.email(),
-                            userInfo.nickname()));
+                            userInfo.email()));
                 });
 
         String accessToken = jwtProvider.createAccessToken(user.getId());
