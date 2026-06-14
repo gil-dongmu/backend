@@ -43,15 +43,7 @@ public class KakaoOAuthClient implements OAuthClient {
             Map<String, Object> account = (Map<String, Object>) body.get("kakao_account");
             String email = account == null ? null : (String) account.get("email");
 
-            String nickname = "사용자";
-            if (account != null && account.get("profile") instanceof Map<?, ?> profile) {
-                Object name = ((Map<String, Object>) profile).get("nickname");
-                if (name != null) {
-                    nickname = (String) name;
-                }
-            }
-
-            return new OAuthUserInfo(Provider.KAKAO, providerId, email, nickname);
+            return new OAuthUserInfo(Provider.KAKAO, providerId, email);
         } catch (Exception e) {
             log.error("카카오 사용자 정보 조회 실패", e);
             throw new CustomException(ErrorCode.INVALID_SOCIAL_TOKEN);

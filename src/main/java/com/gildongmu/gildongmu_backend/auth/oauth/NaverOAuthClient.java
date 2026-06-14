@@ -45,9 +45,8 @@ public class NaverOAuthClient implements OAuthClient {
             // 네이버 id는 String으로 응답되므로 그대로 사용
             String providerId = (String) response.get("id");
             String email = (String) response.get("email");
-            String nickname = (String) response.getOrDefault("nickname", "사용자");
 
-            return new OAuthUserInfo(Provider.NAVER, providerId, email, nickname);
+            return new OAuthUserInfo(Provider.NAVER, providerId, email);
         } catch (CustomException e) {
             throw e;
         } catch (Exception e) {

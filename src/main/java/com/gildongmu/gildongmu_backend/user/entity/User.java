@@ -34,7 +34,7 @@ public class User {
     @Column(length = 255)
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String nickname;
 
     @Column(name = "pref_radius_km", nullable = false)
@@ -49,18 +49,22 @@ public class User {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    private User(Provider provider, String providerId, String email, String nickname) {
+    private User(Provider provider, String providerId, String email) {
         this.provider = provider;
         this.providerId = providerId;
         this.email = email;
-        this.nickname = nickname;
         this.prefRadiusKm = 5;
         this.alarmEnabled = true;
         this.alarmCooldownMin = 30;
         this.createdAt = LocalDateTime.now();
     }
 
-    public static User register(Provider provider, String providerId, String email, String nickname) {
-        return new User(provider, providerId, email, nickname);
+    public static User register(Provider provider, String providerId, String email) {
+        return new User(provider, providerId, email);
+    }
+
+    // 닉네임을 설정한다.
+    public void updateNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
