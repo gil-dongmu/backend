@@ -38,3 +38,6 @@ out/
 
 ### Local config ###
 src/main/resources/application-local.yml
+
+### Superpowers (작업용 설계/플랜 문서 - 깃 추적 제외) ###
+docs/superpowers/
